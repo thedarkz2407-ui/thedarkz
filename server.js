@@ -15,8 +15,10 @@ io.on('connection', (socket) => {
     console.log('A new player connected! ID:', socket.id);
 
     // Listen for a 'move' from this player
-    socket.on('makeMove', (moveData) => {
-        console.log('Move received:', moveData);
+    const PORT = process.env.PORT || 3000;
+server.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server is running on port ${PORT}`);
+});
         
         // Broadcast that move to EVERYONE ELSE connected
         socket.broadcast.emit('opponentMove', moveData);
